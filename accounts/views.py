@@ -41,7 +41,7 @@ def login_attempt(request):
         login(request , user)
         return redirect('/')
 
-    return render(request , 'login.html')
+    return render(request , 'signin.html')
 
 def register_attempt(request):
 
@@ -73,7 +73,7 @@ def register_attempt(request):
             print(e)
 
 
-    return render(request , 'signin.html')
+    return render(request , 'signup.html')
 
 def success(request):
     return render(request , 'signup.html')
