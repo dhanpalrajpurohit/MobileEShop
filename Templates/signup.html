@@ -14,7 +14,6 @@
         <div class="" style="margin-left: 25%;margin-right:25%;margin-top: 10%;">
             <div class="card bg-light mb-3" style="max-width: 90%">
                 {% if messages %}
-
                 {% for message in messages %}
                 <div class="alert alert-info">
                   {{ message }}
@@ -62,7 +61,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <div class="text-center">
-                            Don't have an account? <a href="{% url 'login_attempt' %}">Create One</a>
+                            have an account? <a href="{% url 'login_attempt' %}">SignIn</a>
                         </div>
                       </form>
                 </div>

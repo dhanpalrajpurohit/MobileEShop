@@ -26,7 +26,6 @@ def login_attempt(request):
             messages.success(request, 'User not found.')
             return redirect('/accounts/login')
         
-        
         profile_obj = Profile.objects.filter(user = user_obj ).first()
 
         if not profile_obj.is_verified:
@@ -81,7 +80,6 @@ def success(request):
 
 def token_send(request):
     return render(request , 'token_send.html')
-
 
 
 def verify(request , auth_token):
