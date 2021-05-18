@@ -13,6 +13,14 @@ def home(request):
         'books':bookDetail,
         'authors':authorDetail
     }
-    return render(request , 'index.html',data)
+    return render(request, 'index.html', data)
     #else:
     #   return render(request,'index.html')
+
+def bookDetails(request,bookId):
+    bookDetails = book_details.objects.all().filter(book_id=bookId)
+    print(bookDetails)
+    data = {
+        'bookDetail':bookDetails
+    }
+    return render(request, 'bookdetail.html', data)

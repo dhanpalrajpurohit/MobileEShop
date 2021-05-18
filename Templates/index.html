@@ -249,6 +249,9 @@
               <div class="card-body">
                 <h5 class="card-title">{{ author.author_name }}</h5>
               </div>
+              <div>
+                <a href="{% url 'bookDetail' bookId=1 %}">View</a>
+              </div>
             </div>
           {% endfor %}
 
