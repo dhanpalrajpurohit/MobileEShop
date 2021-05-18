@@ -8,7 +8,10 @@ class book_details(models.Model):
     book_detail = models.CharField(max_length = 255)
     book_price = models.IntegerField(max_length=255)
     book_image = models.ImageField(upload_to='media')
-
+    book_type = models.CharField(max_length = 255)
+    book_publish = models.IntegerField(max_length = 255)
+    book_isbn = models.CharField(max_length = 255)
+    book_category = models.CharField(max_length = 255)
     def __str__(self):
         return self.book_name;
 

@@ -19,8 +19,10 @@ def home(request):
 
 def bookDetails(request,bookId):
     bookDetails = book_details.objects.all().filter(book_id=bookId)
-    print(bookDetails)
+    allBook = book_details.objects.exclude(book_id=bookId)
+    print(allBook)
     data = {
-        'bookDetail':bookDetails
+        'bookDetail':bookDetails,
+        'allbooks':allBook
     }
     return render(request, 'bookdetail.html', data)

@@ -190,6 +190,9 @@
                     <span><i class="far fa-star"></i></span>
                 </div>
               </div>
+              <div class="mx-auto p-1">
+                <a class="btn btn-primary" href="{% url 'bookDetail' bookId=book.book_id %}">View Details</a>
+              </div>
             </div>
           {% endfor %}
             <!-- <div class="card">
@@ -249,9 +252,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{ author.author_name }}</h5>
               </div>
-              <div>
-                <a href="{% url 'bookDetail' bookId=1 %}">View</a>
-              </div>
+              
             </div>
           {% endfor %}
 

@@ -69,9 +69,9 @@
                 <img src="{{ bookDetail.book_image.url }}" style="height:500px;width:300px;">
             </div>
             <div class="col-8" style="margin-top:2%;">
-                <div><h2>Think Like A Monk</h2></div>
+                <div><h2>{{bookDetail.book_name}}</h2></div>
                 <div>(Paperback)</div>
-                <div> | Publisher: Amazing Reads | Released: 2014 </div>
+                <div> | Publisher: Amazing Reads | Released: {{bookDetail.book_publish}} </div>
                 <div class="rating text-warning font-size-12">
                     <span><i class="fas fa-star"></i></span>
                     <span><i class="fas fa-star"></i></span>
@@ -80,7 +80,7 @@
                     <span><i class="far fa-star"></i></span>
                 </div>
                 <div class="row">
-                    <div class="col-1 mt-3 mr-3"><h2>RS.105</h2></div>
+                    <div class="col-1 mt-3 mr-3"><h2>RS.{{bookDetail.book_price}}</h2></div>
                     <div class="col-3">
                         <div class="text-success">Available</div>
                             Ships within 18-20 Business Days
@@ -104,8 +104,8 @@
                             <h5>ISBN-10:</h5>
                             <h5>Publisher Date:</h5> 	
                         </div>                        <div class="col-3">
-                            <h5>8192910911</h5>
-                            <h5>2014</h5>
+                            <h5>{{bookDetail.book_isbn}}</h5>
+                            <h5>{{bookDetail.book_publish}}</h5>
         
                         </div>
                     </div>
@@ -124,11 +124,12 @@
         </div>
         <div>
             <div class="card-deck">
-
+                
+                {% for book in allbooks %}
                     <div class="card">
-                      <img class="card-img-top" src="./images/image1.JPG" alt="Card image cap">
+                      <img class="card-img-top" src="{{ book.book_image.url }}" alt="Card image cap">
                       <div class="card-body">
-                        <h5 class="card-title">Brostan</h5>
+                        <h5 class="card-title">{{book.book_name}}</h5>
                         <div class="rating text-warning font-size-12">
                             <span><i class="fas fa-star"></i></span>
                             <span><i class="fas fa-star"></i></span>
@@ -136,11 +137,13 @@
                             <span><i class="fas fa-star"></i></span>
                             <span><i class="far fa-star"></i></span>
                         </div>
-                        <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                        <div class="mx-auto p-1">
+                            <a class="btn btn-primary" href="{% url 'bookDetail' bookId=book.book_id %}">View Details</a>
+                          </div>
                       </div>
                     </div>
-
-                    <div class="card">
+                    {% endfor %}
+                    <!-- <div class="card">
                       <img class="card-img-top" src="./images/Image2.jpg" alt="Card image cap">
                       <div class="card-body">
                         <h5 class="card-title">The King of durgs</h5>
@@ -180,7 +183,7 @@
                               <span><i class="far fa-star"></i></span>
                             </div>
                         </div>
-                      </div>
+                    </div> -->
                   </div>        
         </div>
     </section>
