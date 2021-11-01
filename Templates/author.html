@@ -1,0 +1,15 @@
+{% block content %}
+<section style="margin-top:1%;margin-right:20%;margin-left:20%;margin-bottom: 1%">
+    <div style="text-align: center"><h3>Best Author</h3></div>
+    <div class="card-deck">
+      {% for author in authors %}
+        <div class="card">
+          <img class="card-img-top rounded" src="{{ author.author_image.url }}" alt="Card image cap" height="300px">
+          <div class="card-body">
+            <h5 class="card-title">{{ author.author_name }}</h5>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+</section>
+{% endblock %}

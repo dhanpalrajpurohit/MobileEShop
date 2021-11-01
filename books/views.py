@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import book_details,author_details
 # Create your views here.
 def search(request):
-    return render(request,'searchResult.html')
+    return render(request,'base.html')
 
 #@login_required
 def home(request):
@@ -16,6 +16,13 @@ def home(request):
     return render(request, 'index.html', data)
     #else:
     #   return render(request,'index.html')
+def temp(request):
+    authorDetail = author_details.objects.all()
+    data = {
+        'authors':authorDetail
+    }
+    return render(request, 'home.html', data)
+    
 
 def bookDetails(request,bookId):
     bookDetails = book_details.objects.all().filter(book_id=bookId)
