@@ -1,111 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- <link rel="stylesheet" href="../statics/bootstrap/bootstrap.min.css.map"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
+
 <body>
 
-        <section>
-                <div class="container-fluid">
-                  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                      <a class="navbar-brand" href="#">Book</a>
-                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                    
-                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                          <li class="nav-item active">
-                            <a class="nav-link" href="#">Books <span class="sr-only">(current)</span></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#">New Arrivals</a>
-                          </li>
-                          
-                          <li class="nav-item">
-                              <a class="nav-link" href="#">Pre-Order</a>
-                          </li>
-            
-                          <li class="nav-item">
-                              <a class="nav-link" href="#">Bestsellers</a>
-                          </li>
-            
-                          <li class="nav-item">
-                              <a class="nav-link" href="#">TextBooks</a>
-                          </li>
-            
-                          <li class="nav-item">
-                              <a class="nav-link" href="#">Award Winners</a>
-                          </li>
-            
-                          <li class="nav-item">
-                              <a class="nav-link" href="{% url 'search' %}">Featured Author</a>
-                          </li>
-                        </ul>
-                        <form class="form-inline my-2 my-lg-0" style="margin-right: 30%;">
-                          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                        <a class="btn btn-outline-success mr-sm-2" href="{% url 'login_attempt' %}">SignIn</a>
-                        <a class="btn btn-outline-success mr-sm-2" href="{% url 'register_attempt' %}">SignUp</a>
-                      </div>
-                    </nav>
-              </div>
-        </section>
-
     <section>
-            <div class="container-fluid">
-                    <div class="" style="margin-left: 25%;margin-right:25%;margin-top: 10%;">
-                        {% if messages %}
-            
-                            {% for message in messages %}
-                            <div class="alert alert-info">
-                              {{ message }}
+        <div class="container-fluid">
+            <div class="" style="margin-left: 25%;margin-right:25%;margin-top: 10%;">
+                {% if messages %}
+
+                {% for message in messages %}
+                <div class="alert alert-info">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="card bg-light mb-3" style="max-width: 90%">
+                    <div class="card-header fa fa-bold">SignIn</div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Username</label>
+                                <input type="text" class="form-control" name="username" id="exampleInputEmail1"
+                                    placeholder="Enter Username">
                             </div>
-                            {% endfor %}
-                            {% endif %}
-                        <div class="card bg-light mb-3" style="max-width: 90%">
-                            <div class="card-header fa fa-bold">SignIn</div>
-                            <div class="card-body">
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                      <label for="exampleInputEmail1">Name</label>
-                                      <input type="text" class="form-control" name="username" id="exampleInputEmail1" placeholder="Enter email">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="exampleInputPassword1">Password</label>
-                                      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                      <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
-                                      <small id="emailHelp" class="form-text text-muted">We'll never share your username and password with anyone else.</small>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <div class="text-center">
-                                        Don't have an account? <a href="{% url 'register_attempt' %}">Create One</a>
-                                    </div>
-                                  </form>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                                    placeholder="Password">
+                                <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your username and
+                                    password with anyone else.</small>
                             </div>
-                        </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="text-center">
+                                Don't have an account? <a href="{% url 'register_attempt' %}">Create One</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
+        </div>
     </section>
-   
-    <section style="margin-top:1%;align-items: center;">
-        <nav class="navbar bottom navbar-light bg-light">
-            <a class="navbar-brand" href="#" style="margin-right:50%;margin-left:50%;">Mode by Dhanpal</a>
-         </nav>
-    </section>
+
     <!-- <script src="../statics/bootstrap/jquery.min.js"></script>
     <script src="../statics/bootstrap/popper.min.js"></script>
     <script src="../statics/bootstrap/bootstrap.min.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

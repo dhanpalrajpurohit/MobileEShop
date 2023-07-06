@@ -10,9 +10,9 @@ from django.contrib.auth import authenticate,login
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-# #@login_required
-# def home(request):
-#     return render(request , 'index.html')
+@login_required
+def home(request):
+    return render(request , 'index.html')
 
 
 
@@ -21,7 +21,7 @@ def login_attempt(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user_obj = User.objects.filter(username = username).first()
+        user_obj = User.objects.get(username = username)
         if user_obj is None:
             messages.success(request, 'User not found.')
             return redirect('/accounts/login')
@@ -53,11 +53,11 @@ def register_attempt(request):
         try:
             if User.objects.filter(username = username).first():
                 messages.success(request, 'Username is taken.')
-                return redirect('/register')
+                return redirect('register')
 
             if User.objects.filter(email = email).first():
                 messages.success(request, 'Email is taken.')
-                return redirect('/register')
+                return redirect('register')
             
             user_obj = User(username = username , email = email)
             user_obj.set_password(password)
@@ -66,7 +66,7 @@ def register_attempt(request):
             profile_obj = Profile.objects.create(user = user_obj , auth_token = auth_token)
             profile_obj.save()
             send_mail_after_registration(email , auth_token)
-            return redirect('/token')
+            return redirect(' token')
 
         except Exception as e:
             print(e)
@@ -107,5 +107,5 @@ def send_mail_after_registration(email , token):
     message = f'Hi paste the link to verify your account http://127.0.0.1:8000/verify/{token}'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
-    send_mail(subject, message , email_from ,recipient_list )
+    print(send_mail(subject, message , email_from ,recipient_list))
     
